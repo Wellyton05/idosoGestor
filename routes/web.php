@@ -26,6 +26,10 @@ Route::get('/residentes', function () {
     return view('layouts.residents');
 })->middleware(['auth', 'verified'])->name('residents');
 
+Route::get('/adicionar-residente', function () {
+    return view('layouts.add-residents');
+})->middleware(['auth', 'verified'])->name('add-residents');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
