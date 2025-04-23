@@ -25,7 +25,7 @@
 
                             <button 
                                 type="submit" 
-                                class="ml-2 px-4 py-2 text-sm font-medium text-gray-800 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                                class="ml-2 px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-600 transition focus:ring-4 focus:outline-none focus:ring-blue-300"
                             >
                                 Buscar
                             </button>
@@ -37,9 +37,9 @@
 
         <!-- Espaçamento entre a barra de pesquisa e a tabela -->
         <div class="mt-8">
-            <!-- Tabela de residentes com espaçamento adequado -->
-            <div>
-                <table class="w-full bg-white">
+            <!-- Tabela de residentes centralizada com largura controlada -->
+            <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
+                <table class="w-full">
                     <thead>
                         <tr class="border-b border-t border-gray-200">
                             <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 40%">Nome do residente</th>
@@ -50,22 +50,22 @@
                     </thead>
                    
                     <tbody>
-                            @forelse($residents as $resident)
-                                <tr class="border-b border-gray-200">
-                                    <td class="py-4 text-sm text-gray-800">{{ $resident->nome }}</td>
-                                    <td class="py-4 text-sm text-gray-800">{{ $resident->idade }}</td>
-                                    <td class="py-4 text-sm text-gray-800">{{ ucfirst($resident->estado_saude) }}</td>
-                                    <td class="py-4 text-sm text-gray-800 text-right">
-                                        <a href="{{ route('residents.edit', $resident) }}" class="text-yellow-600 hover:text-yellow-800 mr-2">Editar/Visualizar</a>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4" class="py-4 text-center text-gray-500">
-                                        Nenhum residente cadastrado.
-                                    </td>
-                                </tr>
-                            @endforelse
+                        @forelse($residents as $resident)
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 text-sm text-gray-800">{{ $resident->nome }}</td>
+                                <td class="py-4 text-sm text-gray-800">{{ $resident->idade }}</td>
+                                <td class="py-4 text-sm text-gray-800">{{ ucfirst($resident->estado_saude) }}</td>
+                                <td class="py-4 text-sm text-gray-800 text-right">
+                                    <a href="{{ route('residents.edit', $resident) }}" class="text-yellow-600 hover:text-yellow-800 mr-2">Editar/Visualizar</a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="py-4 text-center text-gray-500">
+                                    Nenhum residente cadastrado.
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -86,9 +86,8 @@
             <div class="mt-6 flex justify-center">
                 <a 
                     href="{{ route('residents.create') }}"
-                    class="flex items-center px-8 py-2 text-white rounded"
-                    style="background-color: rgba(31, 41, 55, 1);
-                    padding: 10px 20px;"
+                    class="flex items-center px-8 py-2 text-white rounded bg-gray-800 hover:bg-gray-600 transition"
+                    style="padding: 10px 20px;"
                 >
                     Adicionar
                 </a>
