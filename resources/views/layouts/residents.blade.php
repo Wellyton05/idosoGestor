@@ -12,14 +12,14 @@
                 <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
                 
                 <div class="relative">
-                    <form>
+                    <form method="GET" action="{{ route('residents.index') }}" class="flex items>
                         <div class="flex items-center">
                             <input 
+                                name="search"
                                 type="search" 
                                 id="search" 
                                 class="block w-full pl-4 pr-4 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" 
                                 placeholder="Digite o nome do residente" 
-                                aria-label="Pesquisar residente" 
                                 required 
                             />
 
