@@ -48,23 +48,25 @@
                             <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 20%">Editar/Visualizar</th>
                         </tr>
                     </thead>
-                    <!--
+                   
                     <tbody>
-                        <tr class="border-b border-gray-200">
-                            <td class="py-4 text-sm text-gray-800">Augustinho</td>
-                            <td class="py-4 text-sm text-gray-800">60</td>
-                            <td class="py-4 text-sm text-gray-800">xxx</td>
-                            <td class="py-4 text-sm text-gray-800 text-right">
-                                <button class="text-gray-600 hover:text-gray-800">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
+                            @forelse($residents as $resident)
+                                <tr class="border-b border-gray-200">
+                                    <td class="py-4 text-sm text-gray-800">{{ $resident->nome }}</td>
+                                    <td class="py-4 text-sm text-gray-800">{{ $resident->idade }}</td>
+                                    <td class="py-4 text-sm text-gray-800">{{ ucfirst($resident->estado_saude) }}</td>
+                                    <td class="py-4 text-sm text-gray-800 text-right">
+                                        <a href="{{ route('residents.edit', $resident) }}" class="text-yellow-600 hover:text-yellow-800 mr-2">Editar/Visualizar</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="py-4 text-center text-gray-500">
+                                        Nenhum residente cadastrado.
+                                    </td>
+                                </tr>
+                            @endforelse
                     </tbody>
-                    -->
                 </table>
             </div>
 
@@ -83,7 +85,7 @@
             <!-- Botão Adicionar com espaçamento -->
             <div class="mt-6 flex justify-center">
                 <a 
-                    href="{{ route('add-residents') }}"
+                    href="{{ route('residents.create') }}"
                     class="flex items-center px-8 py-2 text-white rounded"
                     style="background-color: rgba(31, 41, 55, 1);
                     padding: 10px 20px;"

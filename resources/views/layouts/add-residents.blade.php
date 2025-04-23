@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <form action="{{ route('residents') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    <form action="{{ route('residents.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                         @csrf
                         
                         <!--  
@@ -29,8 +29,8 @@
 
                         {{-- Campos de texto --}}
                         <div>
-                            <label for="nome_completo" class="block text-sm font-medium text-gray-700">Nome completo</label>
-                            <input type="text" name="nome_completo" id="nome_completo" required
+                            <label for="nome" class="block text-sm font-medium text-gray-700">Nome completo</label>
+                            <input type="text" name="nome" id="nome" required
                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500" />
                         </div>
 
@@ -41,14 +41,14 @@
                         </div>
 
                         <div>
-                            <label for="responsavel_nome" class="block text-sm font-medium text-gray-700">Nome familiar/Responsável</label>
-                            <input type="text" name="responsavel_nome" id="responsavel_nome" required
+                            <label for="nome_responsavel" class="block text-sm font-medium text-gray-700">Nome familiar/Responsável</label>
+                            <input type="text" name="nome_responsavel" id="nome_responsavel" required
                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500" />
                         </div>
 
                         <div>
-                            <label for="responsavel_contato" class="block text-sm font-medium text-gray-700">Contato familiar/Responsável</label>
-                            <input type="text" name="responsavel_contato" id="responsavel_contato" required
+                            <label for="contato_responsavel" class="block text-sm font-medium text-gray-700">Contato familiar/Responsável</label>
+                            <input type="text" name="contato_responsavel" id="contato_responsavel" required
                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-blue-500 focus:border-blue-500" />
                         </div>
 
