@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-3">
         <!-- Barra de pesquisa -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="w-full md:w-96 mx-auto mt-6 relative">
@@ -45,7 +45,6 @@
                             <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 40%">Nome do residente</th>
                             <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 20%">Idade</th>
                             <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 20%">Estado de saúde</th>
-                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 20%">Editar/Visualizar</th>
                         </tr>
                     </thead>
                    
@@ -70,16 +69,9 @@
                 </table>
             </div>
 
-            <!-- Paginação com espaçamento -->
+            <!-- Paginação com espaçamento -->   
             <div class="mt-8 flex justify-center">
-                <nav class="inline-flex rounded">
-                    <button class="px-3 py-1 text-sm text-white bg-gray-800 rounded-l">1</button>
-                    <button class="px-3 py-1 text-sm text-gray-700 bg-white border-t border-b border-r border-l border-gray-200">2</button>
-                    <button class="px-3 py-1 text-sm text-gray-700 bg-white border-t border-b border-r border-gray-200">3</button>
-                    <span class="px-3 py-1 text-sm text-gray-700 bg-white border-t border-b border-gray-200">...</span>
-                    <button class="px-3 py-1 text-sm text-gray-700 bg-white border-t border-b border-r border-gray-200">7</button>
-                    <button class="px-3 py-1 text-sm text-gray-700 bg-white border-t border-b border-r border-gray-200 rounded-r">8</button>
-                </nav>
+                {{ $residents->links() }}
             </div>
 
             <!-- Botão Adicionar com espaçamento -->
