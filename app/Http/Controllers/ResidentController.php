@@ -7,24 +7,15 @@ use Illuminate\Http\Request;
 
 class ResidentController extends Controller
 {   
-    /*
-    public function index()
-    {
-    $residents = Resident::all();  // Busca todos os residentes
-    return view('layouts.residents', compact('residents'));  // Envia para a view
-    }
-    */
     public function index(Request $request)
     {
-    $search = $request->input('search');
-
-    $residents = Resident::query()
-        ->when($search, function ($query, $search) {
+        $search = $request->input('search');
+    
+        $residents = Resident::when($search, function ($query, $search) {
             return $query->where('nome', 'like', '%' . $search . '%');
-        })
-        ->get();
-
-    return view('layouts.residents', compact('residents'));
+        })->paginate(10)->appends($request->query());
+    
+        return view('layouts.residents', compact('residents'));
     }
     
 
