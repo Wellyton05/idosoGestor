@@ -42,9 +42,9 @@
                 <table class="w-full">
                     <thead>
                         <tr class="border-b border-t border-gray-200">
-                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 40%">Nome do residente</th>
-                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 20%">Idade</th>
-                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 20%">Estado de saúde</th>
+                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 40%">Nome do residente:</th>
+                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 20%">Idade:</th>
+                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 20%">Estado de saúde:</th>
                         </tr>
                     </thead>
                    
@@ -53,9 +53,13 @@
                             <tr class="border-b border-gray-200">
                                 <td class="py-4 text-sm text-gray-800">{{ $resident->nome }}</td>
                                 <td class="py-4 text-sm text-gray-800">{{ $resident->idade }}</td>
-                                <td class="py-4 text-sm text-gray-800">{{ ucfirst($resident->estado_saude) }}</td>
+                                <td class="py-4 text-sm">
+                                    <span class="@if($resident->estado_saude === 'boa') text-green-600 @elseif($resident->estado_saude === 'regular') text-yellow-600 @else text-red-600 @endif font-semibold">
+                                        {{ ucfirst($resident->estado_saude) }}
+                                    </span>
+                                </td>
                                 <td class="py-4 text-sm text-gray-800 text-right">
-                                    <a href="{{ route('residents.edit', $resident) }}" class="text-yellow-600 hover:text-yellow-800 mr-2">Editar/Visualizar</a>
+                                <a href="{{ route('residents.edit', $resident) }}" class="text-gray-900 font-bold hover:text-gray-700 mr-2">Editar/Visualizar</a>
                                 </td>
                             </tr>
                         @empty
