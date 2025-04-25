@@ -1,3 +1,5 @@
+@section('title', 'Resetar senha - ' . config('app.name'))
+
 <x-guest-layout>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
@@ -32,7 +34,7 @@
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button>
-                {{ __('Reset Password') }}
+                {{ __('Resetar senha') }}
             </x-primary-button>
         </div>
     </form>

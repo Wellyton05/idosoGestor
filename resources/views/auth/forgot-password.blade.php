@@ -1,3 +1,5 @@
+@section('title', 'Redefinir senha - ' . config('app.name'))
+
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Esqueceu sua senha? Sem problemas. Basta nos informar seu endereço de e-mail e enviaremos um link para redefinição de senha que permitirá que você escolha uma nova.') }}

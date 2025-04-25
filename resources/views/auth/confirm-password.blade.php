@@ -1,3 +1,5 @@
+@section('title', 'Confirmar senha - ' . config('app.name'))
+
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Esta é uma área segura do aplicativo. Confirme sua senha antes de continuar.') }}

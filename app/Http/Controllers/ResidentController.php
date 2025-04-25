@@ -27,9 +27,9 @@ class ResidentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome' => 'required|string|max:255',
-            'idade' => 'required|integer|min:0',
-            'nome_responsavel' => 'required|string|max:255',
+            'nome' => 'required|string|min:0|max:255',
+            'idade' => 'required|integer|min:60|max:120',
+            'nome_responsavel' => 'required|string|min:0|max:255',
             'contato_responsavel' => 'required|string|max:255',
             'cpf' => 'required|string|max:14|unique:residents,cpf',
             'estado_saude' => 'required|string',
