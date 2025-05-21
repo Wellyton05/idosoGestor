@@ -19,18 +19,20 @@
                     <x-nav-link :href="route('residents.index')" :active="request()->routeIs('residents.index')">
                         {{ __('Residentes') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('atividades.index')" :active="request()->routeIs('atividades.*')">
+                    <x-nav-link :href="route('activities.index')" :active="request()->routeIs('activities.index*')">
                         {{ __('Atividades') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('visitas.index')" :active="request()->routeIs('visitas.*')">
+                    <x-nav-link :href="route('visits.index')" :active="request()->routeIs('visits.index*')">
                         {{ __('Visitas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('comunicacao.index')" :active="request()->routeIs('comunicacao.*')">
+                    <x-nav-link :href="route('communication.index')" :active="request()->routeIs('communication.index*')">
                         {{ __('Comunicação') }}
                     </x-nav-link>
+                    <!--
                     <x-nav-link :href="route('configuracoes.index')" :active="request()->routeIs('configuracoes.*')">
                         {{ __('Configurações') }}
                     </x-nav-link>
+                    -->
                 </div>
             </div>
 
@@ -89,13 +91,13 @@
             <x-responsive-nav-link :href="route('residents.index')" :active="request()->routeIs('resident.index')">
                 {{ __('Residentes') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('atividades.index')" :active="request()->routeIs('atividades.*')">
+            <x-responsive-nav-link :href="route('activities.index')" :active="request()->routeIs('activities.index*')">
                 {{ __('Atividades') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('visitas.index')" :active="request()->routeIs('visitas.*')">
+            <x-responsive-nav-link :href="route('visits.index')" :active="request()->routeIs('visits.index*')">
                 {{ __('Visitas') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('comunicacao.index')" :active="request()->routeIs('comunicacao.*')">
+            <x-responsive-nav-link :href="route('communication.index')" :active="request()->routeIs('communication.index*')">
                 {{ __('Comunicação') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('configuracoes.index')" :active="request()->routeIs('configuracoes.*')">

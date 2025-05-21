@@ -39,4 +39,7 @@ class ResidentController extends Controller
 
         return redirect()->back()->with('success', 'Residente cadastrado com sucesso!');
     }
+
+   
+
 }
