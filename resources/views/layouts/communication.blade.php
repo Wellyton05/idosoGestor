@@ -37,7 +37,7 @@
         </div>
         <div class="mt-8">
             <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
-                <table class="w-full"4>
+                <table class="w-full">
                     <thead>
                         <tr class="border-b border-t border-gray-200">
                             <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 40%">Nome do residente:</th>
@@ -53,7 +53,7 @@
                                 <td class="py-4 text-sm text-gray-800">{{ $resident->nome_responsavel }}</td>
                                 <td class="py-4 text-sm text-gray-800 text-right">
                                     <a href="https://wa.me/55{{ preg_replace('/[^0-9]/', '', $resident->contato_responsavel) }}" target="_blank">
-                                        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" width="34" alt="WhatsApp">
+                                        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" width="27.5" alt="WhatsApp">
                                     </a>
                                 </td>
                             </tr>

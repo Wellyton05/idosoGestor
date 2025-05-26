@@ -17,4 +17,9 @@ class Resident extends Model
         'cpf',
         'estado_saude',
     ];
+
+    public function activities(){
+        return $this->belongsToMany(Activity::class, 'activity_resident');
+    }
+
 }

@@ -27,6 +27,8 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::resource('visits', VisitsController::class);
     Route::resource('communication', CommunicationController::class);
     Route::resource('configuracoes', ResidenteController::class);
+    Route::post('/activities/{activity}/add-resident', [ActivitiesController::class, 'addResident'])->name('activities.addResident');
+    Route::delete('/activities/{activity}/remove-resident/{resident}', [ActivitiesController::class, 'removeResident'])->name('activities.removeResident');
 });
 
 require __DIR__.'/auth.php';
