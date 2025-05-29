@@ -29,6 +29,10 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::resource('configuracoes', ResidenteController::class);
     Route::post('/activities/{activity}/add-resident', [ActivitiesController::class, 'addResident'])->name('activities.addResident');
     Route::delete('/activities/{activity}/remove-resident/{resident}', [ActivitiesController::class, 'removeResident'])->name('activities.removeResident');
+    Route::get('/visits', [VisitsController::class, 'index'])->name('visits.index');
+    Route::post('/visits', [VisitsController::class, 'store'])->name('visits.store');
+    Route::get('/residents/{resident}/edit', [ResidentController::class, 'edit'])->name('residents.edit');
+    Route::put('/residents/{resident}', [ResidentController::class, 'update'])->name('residents.update');   
 });
 
 require __DIR__.'/auth.php';

@@ -22,4 +22,9 @@ class Resident extends Model
         return $this->belongsToMany(Activity::class, 'activity_resident');
     }
 
+    public function visits()
+    {
+    return $this->hasMany(Visit::class);
+    }
+
 }
