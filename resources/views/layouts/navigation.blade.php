@@ -29,9 +29,6 @@
                         {{ __('Comunicação') }}
                     </x-nav-link>
                     <!--
-                    <x-nav-link :href="route('configuracoes.index')" :active="request()->routeIs('configuracoes.*')">
-                        {{ __('Configurações') }}
-                    </x-nav-link>
                     -->
                 </div>
             </div>
@@ -99,9 +96,6 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('communication.index')" :active="request()->routeIs('communication.index*')">
                 {{ __('Comunicação') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('configuracoes.index')" :active="request()->routeIs('configuracoes.*')">
-                {{ __('Configurações') }}
             </x-responsive-nav-link>
         </div>
 

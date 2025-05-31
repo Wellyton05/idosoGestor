@@ -26,25 +26,13 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::resource('activities', ActivitiesController::class);
     Route::resource('visits', VisitsController::class);
     Route::resource('communication', CommunicationController::class);
-    Route::resource('configuracoes', ResidenteController::class);
     Route::post('/activities/{activity}/add-resident', [ActivitiesController::class, 'addResident'])->name('activities.addResident');
     Route::delete('/activities/{activity}/remove-resident/{resident}', [ActivitiesController::class, 'removeResident'])->name('activities.removeResident');
     Route::get('/visits', [VisitsController::class, 'index'])->name('visits.index');
     Route::post('/visits', [VisitsController::class, 'store'])->name('visits.store');
     Route::get('/residents/{resident}/edit', [ResidentController::class, 'edit'])->name('residents.edit');
     Route::put('/residents/{resident}', [ResidentController::class, 'update'])->name('residents.update');   
+    //Route::get('/residents/{id}/report', [ResidentController::class, 'generateReport'])->name('residents.report');
 });
 
 require __DIR__.'/auth.php';
-
-
-/*
-Route::get('/residentes', function () {
-    return view('layouts.residents');
-})->middleware(['auth', 'verified'])->name('residents');
-
-
-Route::get('/adicionar-residente', function () {
-    return view('layouts.add-residents');
-})->middleware(['auth', 'verified'])->name('add-residents');
-*/

@@ -56,13 +56,14 @@
                                 <td class="py-4 text-sm text-gray-800">{{ $resident->nome }}</td>
                                 <td class="py-4 text-sm text-gray-800">{{ $resident->idade }}</td>
                                 <td class="py-4 text-sm">
-                                    <span class="@if($resident->estado_saude === 'boa') text-green-600 @elseif($resident->estado_saude === 'regular') text-yellow-600 @else text-red-600 @endif font-semibold">
+                                    <span class="@if($resident->estado_saude === 'Boa') text-green-600 @elseif($resident->estado_saude === 'Regular') text-yellow-600 @else text-red-600 @endif font-semibold">
                                         {{ ucfirst($resident->estado_saude) }}
                                     </span>
                                 </td>
                                 <td class="py-4 text-sm text-gray-800 text-right">
                                 <a href="{{ route('residents.edit', $resident) }}" class="text-gray-900 font-bold hover:text-gray-700 mr-2">Editar/Visualizar</a>
                                 </td>
+                               
                             </tr>
                         @empty
                             <tr>

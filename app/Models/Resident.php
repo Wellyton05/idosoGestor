@@ -19,12 +19,11 @@ class Resident extends Model
     ];
 
     public function activities(){
-        return $this->belongsToMany(Activity::class, 'activity_resident');
+    return $this->belongsToMany(Activity::class, 'activity_resident', 'resident_id', 'activity_id');
     }
 
     public function visits()
     {
     return $this->hasMany(Visit::class);
     }
-
 }

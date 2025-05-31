@@ -40,11 +40,14 @@ class ResidentController extends Controller
         return redirect()->back()->with('success', 'Residente cadastrado com sucesso!');
     }
 
-        public function edit(Resident $resident)
+      public function edit(Resident $resident)
     {
         $resident->load(['activities', 'visits']);
 
-        return view('layouts.edit-resident', compact('resident'));
+        // Define as opções possíveis para o estado de saúde
+        $opcoes = ['Boa', 'Regular', 'Precária'];
+
+        return view('layouts.edit-resident', compact('resident', 'opcoes'));
     }
 
     public function update(Request $request, Resident $resident)

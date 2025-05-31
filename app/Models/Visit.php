@@ -20,4 +20,8 @@ class Visit extends Model
     public function residente() {
         return $this->belongsTo(Resident::class, 'resident_id');
     }
+
+    protected $casts = [
+        'data' => 'datetime',
+    ];
 }
