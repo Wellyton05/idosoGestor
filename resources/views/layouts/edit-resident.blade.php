@@ -146,23 +146,21 @@
             </div>
 
             {{-- Botões Gerar PDF e Excluir Residente --}}
-        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 mt-6 flex gap-4 justify-center">
-            <a href="{{ route('residents.report', $resident->id) }}" target="_blank"
-            class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">
-                Gerar Relatório PDF
-            </a>
+            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 mt-6 flex gap-4 justify-center">
+                <a href="{{ route('residents.report', $resident->id) }}" target="_blank"
+                class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">
+                    Gerar Relatório PDF
+                </a>
 
-            <form action="{{ route('residents.destroy', $resident->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este residente? Esta ação não poderá ser desfeita.')">
-                @csrf
-                @method('DELETE')
-                <button type="submit"
-                    class="bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition">
-                    Excluir Residente
-                </button>
-            </form>
-        </div>
-
-
+                <form action="{{ route('residents.destroy', $resident->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este residente? Esta ação não poderá ser desfeita.')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                        class="bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition">
+                        Excluir Residente
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </x-app-layout>

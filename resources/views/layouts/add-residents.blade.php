@@ -29,6 +29,7 @@
                                 <span class="text-xs text-gray-400">(JPG, PNG - máx: 2MB)</span>
                             </label>
                             <input id="photo" name="photo" type="file" accept="image/*" class="hidden" />
+                            <span id="photo-name" class="block mt-2 text-sm text-gray-600"></span>
                         </div>
 
                         {{-- Campos de texto --}}
@@ -88,3 +89,17 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    const fileInput = document.getElementById('photo');
+    const fileNameDisplay = document.getElementById('photo-name');
+
+    fileInput.addEventListener('change', function () {
+        if (this.files && this.files.length > 0) {
+            fileNameDisplay.textContent = this.files[0].name;
+        } else {
+            fileNameDisplay.textContent = '';
+        }
+    });
+</script>
+

@@ -99,6 +99,4 @@ class ResidentController extends Controller
 
         return $pdf->download('relatorio_residente_' . $resident->id . '.pdf');
     }
-   
-
 }
