@@ -95,7 +95,7 @@ class ResidentController extends Controller
     {
         $resident->load(['activities', 'visits']); // carrega relacionamentos
 
-        $pdf = PDF::loadView('residents.report', compact('resident'));
+        $pdf = PDF::loadView('layouts.report', compact('resident'));
 
         return $pdf->download('relatorio_residente_' . $resident->id . '.pdf');
     }
