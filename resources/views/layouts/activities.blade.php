@@ -35,8 +35,8 @@
                 <table class="w-full">
                     <thead>
                         <tr class="border-b border-t border-gray-200">
-                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 40%">Atividade</th>
-                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 60%">Participantes</th>
+                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 40%">Atividade:</th>
+                            <th class="py-3 text-left text-sm font-medium text-gray-700" style="width: 60%">Participantes:</th>
                         </tr>
                     </thead>
                     <tbody>

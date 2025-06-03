@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Resident;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,17 @@ class ResidentController extends Controller
             'contato_responsavel' => 'required|string|max:255',
             'cpf' => 'required|string|max:14|unique:residents,cpf',
             'estado_saude' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        Resident::create($request->all());
+         $data = $request->all();
+
+        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
+            $path = $request->file('photo')->store('residents', 'public');
+            $data['photo'] = $path;
+        }
+
+        Resident::create($data);
 
         return redirect()->back()->with('success', 'Residente cadastrado com sucesso!');
     }
@@ -50,20 +59,46 @@ class ResidentController extends Controller
         return view('layouts.edit-resident', compact('resident', 'opcoes'));
     }
 
-    public function update(Request $request, Resident $resident)
+   public function update(Request $request, Resident $resident)
     {
         $data = $request->validate([
             'idade' => 'required|numeric',
             'contato' => 'required|string',
             'cpf' => 'required|string',
             'estado_saude' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
+
+        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
+            $path = $request->file('photo')->store('residents', 'public');
+            $data['photo'] = $path;
+        }
 
         $resident->update($data);
 
         return redirect()->route('residents.index')->with('success', 'Dados atualizados com sucesso!');
     }
 
+    public function destroy(Resident $resident)
+    {
+        // Apaga a foto do storage se existir
+        if ($resident->photo && \Storage::disk('public')->exists($resident->photo)) {
+            \Storage::disk('public')->delete($resident->photo);
+        }
+
+        $resident->delete();
+
+        return redirect()->route('residents.index')->with('success', 'Residente excluído com sucesso!');
+    }
+
+    public function generatePdf(Resident $resident)
+    {
+        $resident->load(['activities', 'visits']); // carrega relacionamentos
+
+        $pdf = PDF::loadView('residents.report', compact('resident'));
+
+        return $pdf->download('relatorio_residente_' . $resident->id . '.pdf');
+    }
    
 
 }

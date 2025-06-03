@@ -12,15 +12,39 @@
 
             {{-- Card: Informações do Residente --}}
             <div class="bg-white p-6 rounded shadow-md">
-                <form action="{{ route('residents.update', $resident) }}" method="POST">
+                <form action="{{ route('residents.update', $resident) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
+                    {{-- Exibir mensagem de sucesso --}}
+
+                    {{-- Exibir foto atual se existir --}}
                     <div class="flex items-center gap-6 mb-6">
-                        <img src="https://via.placeholder.com/150" alt="Foto do residente" class="w-32 h-32 rounded shadow">
+                        <img src="{{ $resident->photo ? asset('storage/' . $resident->photo) : 'https://via.placeholder.com/150' }}" alt="Foto do residente" class="w-32 h-32 rounded shadow">
                         <div>
                             <h3 class="text-xl font-bold text-gray-800">{{ $resident->nome }}</h3>
                         </div>
+                    </div>
+                    <div class="mb-6">
+                        <label
+                            for="photo"
+                            class="cursor-pointer inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition"
+                        >
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                            Editar imagem
+                        </label>
+                        <input
+                            type="file"
+                            name="photo"
+                            id="photo"
+                            accept="image/*"
+                            class="hidden"
+                            onchange="document.getElementById('photo-name').textContent = this.files[0]?.name || ''"
+                        />
+                        <p id="photo-name" class="mt-2 text-sm text-gray-600"></p>
+                        <p class="text-xs text-gray-500 mt-1">JPG ou PNG até 2MB.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -65,10 +89,10 @@
 
             {{-- Card: Atividades Realizadas --}}
             <div class="bg-white p-6 rounded shadow-md">
-                <h3 class="text-lg font-semibold mb-4 text-center">ATIVIDADES REALIZADAS</h3>
+                <h3 class="text-lg font-semibold mb-4 text-center">ATIVIDADES</h3>
 
                 @if($resident->activities->isEmpty())
-                    <p class="text-center text-gray-500">*Nenhuma atividade realizada ainda pelo residente*</p>
+                    <p class="text-center text-gray-500">*Nenhuma atividade cadastrada ainda para o residente*</p>
                 @else
                     <div class="overflow-x-auto">
                         <table class="min-w-full text-sm text-left text-gray-700">
@@ -89,12 +113,12 @@
                 @endif
             </div>
 
-            {{-- Card: Visitas Recebidas --}}
+            {{-- Card: Visitas --}}
             <div class="bg-white p-6 rounded shadow-md">
-                <h3 class="text-lg font-semibold mb-4 text-center">VISITAS RECEBIDAS</h3>
+                <h3 class="text-lg font-semibold mb-4 text-center">HISTÓRICO DE VISITAS</h3>
 
                 @if($resident->visits->isEmpty())
-                    <p class="text-center text-gray-500">*Nenhuma visita recebida ainda pelo residente*</p>
+                    <p class="text-center text-gray-500">*Nenhuma visita programada ainda para o residente*</p>
                 @else
                     <div class="overflow-x-auto">
                         <table class="min-w-full text-sm text-left text-gray-700">
@@ -120,6 +144,24 @@
                     </div>
                 @endif
             </div>
+
+            {{-- Botões Gerar PDF e Excluir Residente --}}
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 mt-6 flex gap-4 justify-center">
+            <a href="{{ route('residents.report', $resident->id) }}" target="_blank"
+            class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">
+                Gerar Relatório PDF
+            </a>
+
+            <form action="{{ route('residents.destroy', $resident->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este residente? Esta ação não poderá ser desfeita.')">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                    class="bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition">
+                    Excluir Residente
+                </button>
+            </form>
+        </div>
+
 
         </div>
     </div>

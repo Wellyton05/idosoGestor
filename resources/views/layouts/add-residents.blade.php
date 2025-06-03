@@ -67,9 +67,9 @@
                             <select name="estado_saude" id="estado_saude" required
                                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2 bg-white focus:ring-blue-500 focus:border-blue-500">
                                 <option value="">Selecione...</option>
-                                <option value="boa">Boa</option>
-                                <option value="regular">Regular</option>
-                                <option value="precaria">Precária</option>
+                                <option value="Boa">Boa</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Precaria">Precária</option>
                             </select>
                         </div>
 

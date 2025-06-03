@@ -16,14 +16,15 @@ class Resident extends Model
         'contato_responsavel',
         'cpf',
         'estado_saude',
+        'photo',
     ];
 
     public function activities(){
-    return $this->belongsToMany(Activity::class, 'activity_resident', 'resident_id', 'activity_id');
+        return $this->belongsToMany(Activity::class, 'activity_resident', 'resident_id', 'activity_id');
     }
 
     public function visits()
     {
-    return $this->hasMany(Visit::class);
+        return $this->hasMany(Visit::class);
     }
 }

@@ -11,10 +11,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('layouts.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -32,7 +28,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/visits', [VisitsController::class, 'store'])->name('visits.store');
     Route::get('/residents/{resident}/edit', [ResidentController::class, 'edit'])->name('residents.edit');
     Route::put('/residents/{resident}', [ResidentController::class, 'update'])->name('residents.update');   
-    //Route::get('/residents/{id}/report', [ResidentController::class, 'generateReport'])->name('residents.report');
+    Route::get('/residents/{resident}/report', [ResidentController::class, 'generatePdf'])->name('residents.report');
 });
 
 require __DIR__.'/auth.php';

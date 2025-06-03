@@ -9,14 +9,12 @@ use Illuminate\Http\Request;
 class VisitsController extends Controller
 {
     public function index(Request $request) {
-        $dataSelecionada = $request->input('data', now()->toDateString());
-        $visitas = Visit::with('residente') // Relacionamento com residente
-            ->where('data', $dataSelecionada)
-            ->get();
+        $visitas = Visit::with('residente')->get(); // ← Remove o where
         $residentes = Resident::all();
-
-        return view('layouts.visits', compact('visitas', 'residentes', 'dataSelecionada'));
+        
+        return view('layouts.visits', compact('visitas', 'residentes'));
     }
+
 
     public function store(Request $request) {
         $request->validate([

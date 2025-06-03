@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Gestão de Visitas</h2>
     </x-slot>
 
-    <div class="min-h-[calc(100vh-4rem)] flex justify-center items-center bg-gray-50 px-4">
+    <div class="min-h-[calc(100vh-4rem)] flex justify-center items-start bg-gray-50 px-4 py-8 gap-8 flex-wrap md:flex-nowrap">
         <div class="w-full max-w-md bg-white p-8 rounded shadow">
             <!-- Formulário de Agendamento -->
             <h3 class="text-lg font-semibold mb-4">Agende uma visita</h3>
@@ -54,5 +54,36 @@
                 </button>
             </form>
         </div>
+
+        <!-- Calendário -->
+        <div class="w-full md:flex-1 bg-white p-6 rounded shadow">
+            <h3 class="text-lg font-semibold mb-4">Calendário de Visitas</h3>
+            <div id="calendar"></div>
+        </div>
     </div>
 </x-app-layout>
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const calendarEl = document.getElementById('calendar');
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'pt-br',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,listWeek'
+            },
+    events: @json($visitas->map(fn($v) => [
+        'title' => $v->visitante . ' → ' . $v->residente->nome,
+        'start' => $v->data->format('Y-m-d') . 'T' . $v->hora
+    ]))
+
+        });
+
+        calendar.render();
+    });
+</script>
+
