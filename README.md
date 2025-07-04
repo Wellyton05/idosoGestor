@@ -1,6 +1,6 @@
 # 🏡 IdodoGestor
 
-**IdodoGestor** é um sistema de gestão completo para instituições de longa permanência de idosos. Ele permite o controle de residentes, agendamento de visitas, gestão de atividades, comunicação com familiares, entre outras funcionalidades essenciais.
+**IdodoGestor** é um projeto integrador desenvolvido por mim no curso de Sistemas para Internet. Em resumo, é um sistema de gestão completo para instituições de longa permanência de idosos. Ele permite o controle de residentes, agendamento de visitas, gestão de atividades, comunicação com familiares, entre outras funcionalidades essenciais.
 
 ## Funcionalidades principais
 
