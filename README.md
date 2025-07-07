@@ -22,3 +22,12 @@
 - **FullCalendar.js** (calendário interativo)
 - **Composer** (gerenciador de dependências)
 - **NPM & Vite** (gerenciamento e build)
+
+---
+
+## Estrtura de pastas 
+- `app/Models` — modelos dos dados (Residente, Visita, etc.)
+- `app/Http/Controllers` — controladores das rotas e lógica
+- `resources/views` — telas do sistema (Blade)
+- `routes/web.php` — rotas principais do sistema
+- `public/` — assets públicos como imagens e scripts
