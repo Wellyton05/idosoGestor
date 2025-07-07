@@ -15,8 +15,10 @@
 ## Tecnologias utilizadas
 
 - **Laravel** (backend e rotas)
+- **Laravel Breeze** (login, registro, reset de senha)
 - **Blade** (templates)
 - **Tailwind CSS** (estilização)
 - **MySQL** (banco de dados)
-
-
+- **FullCalendar.js** (calendário interativo)
+- **Composer** (gerenciador de dependências)
+- **NPM & Vite** (gerenciamento e build)
