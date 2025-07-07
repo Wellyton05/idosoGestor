@@ -63,25 +63,32 @@
 </x-app-layout>
 
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales-all.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const calendarEl = document.getElementById('calendar');
 
         const calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            locale: 'pt-br',
+            locale: 'pt-br', 
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,listWeek'
             },
-    events: @json($visitas->map(fn($v) => [
-        'title' => $v->visitante . ' → ' . $v->residente->nome,
-        'start' => $v->data->format('Y-m-d') . 'T' . $v->hora
-    ]))
-
+            buttonText: {
+                today: 'Hoje',
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                list: 'Lista'
+            },
+            noEventsContent: 'Nenhuma visita agendada',
+            events: @json($visitas->map(fn($v) => [
+                'title' => $v->visitante . ' → ' . $v->residente->nome,
+                'start' => $v->data->format('Y-m-d') . 'T' . $v->hora
+            ]))
         });
-
         calendar.render();
     });
 </script>
