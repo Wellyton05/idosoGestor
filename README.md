@@ -25,7 +25,7 @@
 
 ---
 
-## Estrtura de pastas 
+## Estrutura de pastas 
 - `app/Models` — modelos dos dados (Residente, Visita, etc.)
 - `app/Http/Controllers` — controladores das rotas e lógica
 - `resources/views` — telas do sistema (Blade)
