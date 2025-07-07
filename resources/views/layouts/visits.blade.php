@@ -22,17 +22,14 @@
 
                 <!-- Horários -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Horários</label>
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        @foreach(['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00'] as $index => $horario)
-                            <div>
-                                <input type="radio" name="hora" id="hora-{{ $index }}" value="{{ $horario }}" class="peer hidden" required>
-                                <label for="hora-{{ $index }}" class="block border rounded px-2 py-1 cursor-pointer peer-checked:bg-gray-800 peer-checked:text-white">
-                                    {{ $horario }}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Horário</label>
+                    <input 
+                        type="time" 
+                        name="hora" 
+                        id="hora" 
+                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                        required
+                    >
                 </div>
 
                 <!-- Nome visitante -->
@@ -88,4 +85,3 @@
         calendar.render();
     });
 </script>
-

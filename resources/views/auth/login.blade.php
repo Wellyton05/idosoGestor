@@ -1,6 +1,11 @@
 @section('title', 'Entrar - ' . config('app.name'))
 
 <x-guest-layout>
+
+    <div class="flex justify-center mb-6">
+        <img src="{{ asset('images/logoIdosoGestor-removebg-preview.png') }}" alt="Idoso Gestor" class="w-36 h-auto">
+    </div>
+    
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -26,13 +31,14 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Remember Me -->
+        <!-- Remember Me
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Lembrar') }}</span>
             </label>
         </div>
+         -->
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
