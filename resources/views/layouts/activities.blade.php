@@ -48,20 +48,20 @@
                                 <!-- Select e botão de adicionar participante -->
                                 <td class="py-4 text-sm text-gray-800">
                                 <!-- Formulário de adicionar participante -->
-                             <form method="POST" action="{{ route('activities.addResident', $activity->id) }}" class="flex items-center gap-2">
-                                @csrf
-                                <div class="relative">
-                                    <select name="resident_id" class="appearance-none border border-gray-300 rounded-md px-3 pr-8 py-2 text-sm text-gray-700 focus:ring focus:ring-green-300">
-                                        <option value="" disabled selected>Selecione um residente</option>
-                                        @foreach($residents as $resident)
-                                            <option value="{{ $resident->id }}">{{ $resident->nome }}</option>
-                                        @endforeach
-                                    </select>     
-                                </div>
-                                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-2 rounded-md shadow-sm transition">
-                                    +
-                                </button>
-                            </form>
+                                    <form method="POST" action="{{ route('activities.addResident', $activity->id) }}" class="flex items-center gap-2">
+                                        @csrf
+                                        <div class="relative">
+                                            <select name="resident_id" class="appearance-none border border-gray-300 rounded-md px-3 pr-8 py-2 text-sm text-gray-700 focus:ring focus:ring-green-300">
+                                                <option value="" disabled selected>Selecione um residente</option>
+                                                @foreach($residents as $resident)
+                                                    <option value="{{ $resident->id }}">{{ $resident->nome }}</option>
+                                                @endforeach
+                                            </select>     
+                                        </div>
+                                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-2 rounded-md shadow-sm transition">
+                                            +
+                                        </button>
+                                    </form>
                                     <!-- Participantes já vinculados -->
                                     <ul class="mt-3 space-y-1">
                                         @foreach($activity->residents as $participant)

@@ -55,7 +55,7 @@
 
                         <div>
                             <label class="block text-sm font-medium">Contato</label>
-                            <input type="text" name="contato" value="{{ $resident->contato_responsavel }}" class="w-full border rounded p-2">
+                            <input type="text" name="contato_responsavel" value="{{ $resident->contato_responsavel }}" class="w-full border rounded p-2">
                         </div>
 
                         <div>

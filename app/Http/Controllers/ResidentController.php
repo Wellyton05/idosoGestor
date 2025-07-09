@@ -63,7 +63,7 @@ class ResidentController extends Controller
     {
         $data = $request->validate([
             'idade' => 'required|numeric',
-            'contato' => 'required|string',
+            'contato_responsavel' => 'required|string',
             'cpf' => 'required|string',
             'estado_saude' => 'required|string',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',

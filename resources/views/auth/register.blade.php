@@ -1,6 +1,11 @@
 @section('title', 'Registrar - ' . config('app.name'))
 
 <x-guest-layout>
+
+    <div class="flex justify-center mb-6">
+        <img src="{{ asset('images/logoIdosoGestor-removebg-preview.png') }}" alt="Idoso Gestor" class="w-36 h-auto">
+    </div>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
