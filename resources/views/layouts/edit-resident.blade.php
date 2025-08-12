@@ -115,7 +115,7 @@
 
             {{-- Card: Visitas --}}
             <div class="bg-white p-6 rounded shadow-md">
-                <h3 class="text-lg font-semibold mb-4 text-center">HISTÓRICO DE VISITAS</h3>
+                <h3 class="text-lg font-semibold mb-4 text-center">VISITAS</h3>
 
                 @if($resident->visits->isEmpty())
                     <p class="text-center text-gray-500">*Nenhuma visita programada ainda para o residente*</p>

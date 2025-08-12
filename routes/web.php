@@ -29,6 +29,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/residents/{resident}/edit', [ResidentController::class, 'edit'])->name('residents.edit');
     Route::put('/residents/{resident}', [ResidentController::class, 'update'])->name('residents.update');   
     Route::get('/residents/{resident}/report', [ResidentController::class, 'generatePdf'])->name('residents.report');
+    Route::delete('/visits/{visit}', [VisitsController::class, 'destroy'])->name('visits.destroy');
 });
 
 require __DIR__.'/auth.php';

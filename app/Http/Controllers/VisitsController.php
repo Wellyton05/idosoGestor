@@ -9,12 +9,15 @@ use Illuminate\Http\Request;
 class VisitsController extends Controller
 {
     public function index(Request $request) {
-        $visitas = Visit::with('residente')->get(); // ← Remove o where
+        $visitas = Visit::with('residente')
+            ->orderBy('data', 'asc')
+            ->orderBy('hora', 'asc')
+            ->paginate(4);         
+            
         $residentes = Resident::all();
         
         return view('layouts.visits', compact('visitas', 'residentes'));
     }
-
 
     public function store(Request $request) {
         $request->validate([
@@ -26,7 +29,14 @@ class VisitsController extends Controller
 
         Visit::create($request->only('data', 'hora', 'visitante', 'resident_id'));
 
-    return redirect()->route('visits.index', ['data' => $request->input('data')])
-        ->with('success', 'Visita agendada com sucesso.');
+        return redirect()->route('visits.index', ['data' => $request->input('data')])
+            ->with('success', 'Visita agendada com sucesso.');
+    }
+
+    public function destroy(Visit $visit) {
+        $visit->delete();
+        
+        return redirect()->route('visits.index')
+            ->with('success', 'Visita cancelada com sucesso.');
     }
 }
