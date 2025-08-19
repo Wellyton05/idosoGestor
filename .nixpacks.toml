@@ -5,18 +5,28 @@ commands = [
 
 [phases.install]
 commands = [
+  # Instala dependências PHP e Node
   "composer install --no-dev --optimize-autoloader",
   "npm install"
 ]
 
 [phases.build]
 commands = [
-  "npm run build" # ou npm run prod dependendo do seu setup
+  # Compila assets com Vite
+  "npm run build"
 ]
 
 [phases.start]
 commands = [
-  # start Laravel
+  # Roda migrations automaticamente
   "php artisan migrate --force",
+  # Inicia Laravel na porta do Railway
   "php artisan serve --host 0.0.0.0 --port $PORT"
+]
+
+[phases.predeploy]
+commands = [
+  "php artisan config:cache",
+  "php artisan route:cache",
+  "php artisan view:cache"
 ]
