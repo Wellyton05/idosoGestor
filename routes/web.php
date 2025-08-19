@@ -18,18 +18,23 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth','verified'])->group(function () {
+    // Resource routes já incluem: index, create, store, show, edit, update, destroy
     Route::resource('residents', ResidentController::class);
     Route::resource('activities', ActivitiesController::class);
     Route::resource('visits', VisitsController::class);
     Route::resource('communication', CommunicationController::class);
+    
+    // Rotas customizadas adicionais
     Route::post('/activities/{activity}/add-resident', [ActivitiesController::class, 'addResident'])->name('activities.addResident');
     Route::delete('/activities/{activity}/remove-resident/{resident}', [ActivitiesController::class, 'removeResident'])->name('activities.removeResident');
-    Route::get('/visits', [VisitsController::class, 'index'])->name('visits.index');
-    Route::post('/visits', [VisitsController::class, 'store'])->name('visits.store');
-    Route::get('/residents/{resident}/edit', [ResidentController::class, 'edit'])->name('residents.edit');
-    Route::put('/residents/{resident}', [ResidentController::class, 'update'])->name('residents.update');   
     Route::get('/residents/{resident}/report', [ResidentController::class, 'generatePdf'])->name('residents.report');
-    Route::delete('/visits/{visit}', [VisitsController::class, 'destroy'])->name('visits.destroy');
+    
+    // REMOVIDAS as rotas duplicadas:
+    // ❌ Route::get('/visits', [VisitsController::class, 'index'])->name('visits.index'); // Já incluída no resource
+    // ❌ Route::post('/visits', [VisitsController::class, 'store'])->name('visits.store'); // Já incluída no resource  
+    // ❌ Route::get('/residents/{resident}/edit', [ResidentController::class, 'edit'])->name('residents.edit'); // Já incluída no resource
+    // ❌ Route::put('/residents/{resident}', [ResidentController::class, 'update'])->name('residents.update'); // Já incluída no resource
+    // ❌ Route::delete('/visits/{visit}', [VisitsController::class, 'destroy'])->name('visits.destroy'); // Já incluída no resource
 });
 
 require __DIR__.'/auth.php';
