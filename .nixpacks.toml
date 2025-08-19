@@ -1,9 +1,22 @@
-[build]
-cmd = "composer install --no-dev --optimize-autoloader && npm install && npm run build"
+[phases.setup]
+commands = [
+  "echo 'Setup phase'"
+]
 
-[start]
-cmd = "php -S 0.0.0.0:$PORT -t public/"
+[phases.install]
+commands = [
+  "composer install --no-dev --optimize-autoloader",
+  "npm install"
+]
 
-[variables]
-PHP_VERSION = "8.1"
-NODE_VERSION = "18"
+[phases.build]
+commands = [
+  "npm run build" # ou npm run prod dependendo do seu setup
+]
+
+[phases.start]
+commands = [
+  # start Laravel
+  "php artisan migrate --force",
+  "php artisan serve --host 0.0.0.0 --port $PORT"
+]
