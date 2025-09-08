@@ -8,7 +8,7 @@
 - Calendário e controle de visitas
 - Registro de presença em atividades
 - Comunicação com familiares 
-- Tela de cadastro e login para os funcionários 
+- Tela de login para os funcionários 
 
 ---
 
@@ -19,7 +19,6 @@
 - **Blade** (templates)
 - **Tailwind CSS** (estilização)
 - **MySQL** (banco de dados)
-- **FullCalendar.js** (calendário interativo)
 - **Composer** (gerenciador de dependências)
 - **NPM & Vite** (gerenciamento e build)
 
