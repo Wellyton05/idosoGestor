@@ -1,9 +1,4 @@
 services:
-  # Serviço do Banco de Dados PostgreSQL
-  - type: psql
-    name: gerenciador-db
-    plan: free
-
   # Serviço da Aplicação Laravel
   - type: web
     name: gerenciador-lar
@@ -15,9 +10,7 @@ services:
     envVars:
       - key: DB_CONNECTION
         value: pgsql
-      - key: APP_KEY # Certifique-se de que este secret está configurado no painel do Render
+      - key: APP_KEY        # Será adicionada manualmente no painel
         sync: false
-      - key: DATABASE_URL
-        fromDatabase:
-          name: gerenciador-db
-          property: internalUrl
+      - key: DATABASE_URL   # Será adicionada manualmente no painel
+        sync: false
