@@ -3,10 +3,10 @@ services:
   - type: web
     name: gerenciador-lar
     plan: free
-    # FORÇA o uso do ambiente PHP!
-    runtime: php
-    buildCommand: "composer install --no-dev && npm install && npm run build && php artisan migrate --force"
-    startCommand: "php artisan serve --host 0.0.0.0 --port $PORT"
+    # A CHAVE CORRETA É "env", NÃO "runtime"
+    env: php 
+    buildCommand: "composer install --no-dev && npm install && npm run build && php artisan config:cache && php artisan route:cache && php artisan migrate --force"
+    startCommand: "heroku-php-apache2 public/"
     envVars:
       - key: DB_CONNECTION
         value: pgsql
