@@ -1,0 +1,46 @@
+# fly.toml: Arquivo de configuração para o Fly.io
+
+# Nome da sua aplicação no Fly.io
+app = "gerenciador-lar"
+
+# Região primária onde sua aplicação vai rodar. "gru" é São Paulo.
+primary_region = "gru"
+
+# Seção de build: como construir sua aplicação
+[build]
+  # Usa um builder padrão que entende de PHP/Laravel
+  builder = "paketobuildpacks/builder:base"
+  [build.args]
+    # Garante que a versão do PHP é a mesma do seu projeto
+    BP_PHP_VERSION = "8.1"
+
+# Seção de deploy: comando a ser executado após um novo deploy
+[deploy]
+  # Isso vai rodar as migrations do banco de dados automaticamente
+  release_command = "php artisan migrate --force"
+
+# Variáveis de ambiente públicas
+[env]
+  APP_ENV = "production"
+  APP_URL = "https://gerenciador-lar.fly.dev" # Verifique se este é o seu URL correto
+  LOG_CHANNEL = "stderr"
+  SESSION_DRIVER = "cookie"
+  SESSION_SECURE_COOKIE = "true"
+  DB_CONNECTION = "mysql"
+  DB_HOST = "gerenciamento-residencial-db.internal" # Conexão interna com o app do banco
+  DB_PORT = "3306"
+
+# Configurações do serviço web
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+# Configuração da máquina virtual (VM)
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
