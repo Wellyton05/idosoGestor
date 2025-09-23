@@ -30,3 +30,10 @@
 - `resources/views` — telas do sistema (Blade)
 - `routes/web.php` — rotas principais do sistema
 - `public/` — assets públicos como imagens e scripts
+
+---
+
+## Hospedagem
+
+O projeto está hospedado na Hostinger, utilizando suporte para Laravel + MySQL, acessível pelo domínio:
+🔗 https://idosogestor.lat/
