@@ -35,5 +35,5 @@
 
 ## Hospedagem
 
-O projeto está hospedado na Hostinger, utilizando suporte para Laravel + MySQL, acessível pelo domínio:
+- O projeto está hospedado na Hostinger, utilizando suporte para Laravel + MySQL, acessível pelo domínio:
 🔗 https://idosogestor.lat/
