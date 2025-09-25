@@ -17,7 +17,13 @@
         
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @if(app()->environment('local'))
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @else
+            <link rel="stylesheet" href="{{ asset('build/assets/app-gxBRa5A0.css') }}">
+            <script src="{{ asset('build/assets/app-Bo-u61x1.js') }}" defer></script>
+        @endif
+
         @stack('scripts')
 
         
