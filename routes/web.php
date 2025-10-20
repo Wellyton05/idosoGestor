@@ -28,6 +28,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/activities/{activity}/add-resident', [ActivitiesController::class, 'addResident'])->name('activities.addResident');
     Route::delete('/activities/{activity}/remove-resident/{resident}', [ActivitiesController::class, 'removeResident'])->name('activities.removeResident');
     Route::get('/residents/{resident}/report', [ResidentController::class, 'generatePdf'])->name('residents.report');
+    Route::get('/activities/report/pdf', [ActivitiesController::class, 'generatePdf'])->name('activities.reportPdf');
     
     // REMOVIDAS as rotas duplicadas:
     // ❌ Route::get('/visits', [VisitsController::class, 'index'])->name('visits.index'); // Já incluída no resource

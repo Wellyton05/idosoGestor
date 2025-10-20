@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Resident;
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use PDF;
 
 class ActivitiesController extends Controller
 {
@@ -38,5 +39,14 @@ class ActivitiesController extends Controller
         $activity->residents()->detach($resident->id);
 
         return redirect()->back()->with('success', 'Residente removido da atividade.');
+    }
+
+    public function generatePdf()
+    {
+        $activities = Activity::with('residents')->orderBy('nome')->get();
+
+        $pdf = PDF::loadView('layouts.activities-report', compact('activities'));
+
+        return $pdf->download('relatorio_atividades_participantes.pdf');
     }
 }
