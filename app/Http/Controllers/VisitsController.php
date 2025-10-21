@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Resident;
 use App\Models\Visit;
 use Illuminate\Http\Request;
+use PDF;
 
 class VisitsController extends Controller
 {
@@ -38,5 +39,14 @@ class VisitsController extends Controller
         
         return redirect()->route('visits.index')
             ->with('success', 'Visita cancelada com sucesso.');
+    }
+
+    public function generatePdf()
+    {
+        $visits = Visit::with('residente')->orderBy('data', 'desc')->orderBy('hora', 'desc')->get();
+
+        $pdf = PDF::loadView('layouts.visits-report', compact('visits'));
+
+        return $pdf->download('relatorio_geral_visitas.pdf');
     }
 }
