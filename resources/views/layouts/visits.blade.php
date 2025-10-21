@@ -93,12 +93,11 @@
                 </div>
 
                 <div class="mt-8 flex gap-4 justify-center">
-                <a href="{{ route('visits.reportPdf') }}" target="_blank"
-                class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">
-                    Gerar Relatório PDF
-                </a>
-            </div>
-                
+                    <a href="{{ route('visits.reportPdf') }}" target="_blank"
+                    class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">
+                        Gerar Relatório PDF
+                    </a>
+                </div>
             @else
                 <div class="text-center py-12">
                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

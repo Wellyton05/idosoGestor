@@ -67,7 +67,7 @@
                             <td>{{ $visit->data ? \Carbon\Carbon::parse($visit->data)->format('d/m/Y') : '-' }}</td>
                             <td>{{ $visit->hora ? \Carbon\Carbon::parse($visit->hora)->format('H:i') : '-' }}</td>
                             <td>{{ $visit->visitante }}</td>
-                            <td>{{ $visit->resident->nome ?? 'Residente não encontrado' }}</td>
+                            <td>{{ $visit->residente->nome ?? 'Residente não encontrado' }}</td>
                         </tr>
                     @endforeach
                 </tbody>
