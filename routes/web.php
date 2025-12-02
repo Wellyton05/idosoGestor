@@ -31,12 +31,6 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/activities/report/pdf', [ActivitiesController::class, 'generatePdf'])->name('activities.reportPdf');
     Route::get('/visits/report/pdf', [VisitsController::class, 'generatePdf'])->name('visits.reportPdf');
     
-    // REMOVIDAS as rotas duplicadas:
-    // ❌ Route::get('/visits', [VisitsController::class, 'index'])->name('visits.index'); // Já incluída no resource
-    // ❌ Route::post('/visits', [VisitsController::class, 'store'])->name('visits.store'); // Já incluída no resource  
-    // ❌ Route::get('/residents/{resident}/edit', [ResidentController::class, 'edit'])->name('residents.edit'); // Já incluída no resource
-    // ❌ Route::put('/residents/{resident}', [ResidentController::class, 'update'])->name('residents.update'); // Já incluída no resource
-    // ❌ Route::delete('/visits/{visit}', [VisitsController::class, 'destroy'])->name('visits.destroy'); // Já incluída no resource
 });
 
 require __DIR__.'/auth.php';

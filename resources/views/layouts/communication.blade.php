@@ -11,7 +11,7 @@
 
     <div class="py-6">
         <!-- Barra de pesquisa -->
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <form method="GET" action="{{ route('communication.index') }}" 
                   class="flex flex-col md:flex-row md:items-end gap-4 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                 <div class="flex-1">
@@ -45,22 +45,22 @@
         </div>
 
         <!-- Lista de comunicação -->
-        <div class="mt-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+        <div class="mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-x-auto">
                 <table class="min-w-full text-sm text-gray-700">
                     <thead class="bg-gray-50 border-b border-gray-200">
                         <tr>
-                            <th class="py-3 px-4 text-left font-medium">Nome do residente</th>
-                            <th class="py-3 px-4 text-left font-medium">Familiar/Responsável</th>
-                            <th class="py-3 px-4 text-center font-medium">Contato</th>
+                            <th class="py-3 px-4 text-left font-medium whitespace-nowrap">Nome do residente</th>
+                            <th class="py-3 px-4 text-left font-medium whitespace-nowrap">Familiar/Responsável</th>
+                            <th class="py-3 px-4 text-center font-medium whitespace-nowrap">Contato</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($residents as $resident)
                             <tr class="hover:bg-gray-50 transition-colors">
-                                <td class="py-4 px-4 font-medium text-gray-900">{{ $resident->nome }}</td>
-                                <td class="py-4 px-4">{{ $resident->nome_responsavel }}</td>
-                                <td class="py-4 px-4 text-center">
+                                <td class="py-4 px-4 font-medium text-gray-900 whitespace-nowrap">{{ $resident->nome }}</td>
+                                <td class="py-4 px-4 whitespace-nowrap">{{ $resident->nome_responsavel }}</td>
+                                <td class="py-4 px-4 text-center whitespace-nowrap">
                                     @if($resident->contato_responsavel)
                                         <a href="https://wa.me/55{{ preg_replace('/[^0-9]/', '', $resident->contato_responsavel) }}" 
                                            target="_blank" 

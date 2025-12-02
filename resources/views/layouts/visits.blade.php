@@ -35,6 +35,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Residente (idoso)</label>
                     <select name="resident_id" class="w-full border rounded px-3 py-2" required>
+                        <option value="" disabled selected>Selecione um Residente</option>
                         @foreach($residentes as $residente)
                             <option value="{{ $residente->id }}">{{ $residente->nome }}</option>
                         @endforeach

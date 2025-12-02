@@ -9,7 +9,7 @@
 
     <div class="py-3">
         <!-- Barra de pesquisa -->
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <form method="GET" action="{{ route('residents.index') }}" class="flex flex-col md:flex-row md:items-end gap-4 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                 <div class="flex-1">
                     <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
@@ -41,53 +41,55 @@
         </div>
 
         <!-- Espaçamento entre a barra de pesquisa e a tabela -->
-<div class="mt-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                <table class="min-w-full text-sm text-gray-700">
-                    <thead class="bg-gray-50 border-b border-gray-200">
-                        <tr>
-                            <th class="py-3 px-4 text-left font-medium">Nome do residente</th>
-                            <th class="py-3 px-4 text-left font-medium">Idade</th>
-                            <th class="py-3 px-4 text-left font-medium">Estado de saúde</th>
-                            <th class="py-3 px-4 text-right font-medium">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($residents as $resident)
-                            <tr class="hover:bg-gray-50 transition-colors">
-                                <td class="py-4 px-4 font-medium text-gray-900">{{ $resident->nome }}</td>
-                                <td class="py-4 px-4">{{ $resident->idade }}</td>
-                                <td class="py-4 px-4">
-                                    <span class="px-3 py-1 rounded-full text-xs font-semibold
-                                        @if($resident->estado_saude === 'Boa') bg-green-100 text-green-700
-                                        @elseif($resident->estado_saude === 'Regular') bg-yellow-100 text-yellow-700
-                                        @else bg-red-100 text-red-700
-                                        @endif
-                                    ">
-                                        {{ ucfirst($resident->estado_saude) }}
-                                    </span>
-                                </td>
-                                <td class="py-4 px-4 text-right">
-                                    <a 
-                                        href="{{ route('residents.edit', $resident) }}" 
-                                        class="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 font-medium transition-colors"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M4 13v7h7l9-9-7-7-9 9z"/>
-                                        </svg>
-                                        Editar/Visualizar
-                                    </a>
-                                </td>
-                            </tr>
-                        @empty
+        <div class="mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-gray-700">
+                        <thead class="bg-gray-50 border-b border-gray-200">
                             <tr>
-                                <td colspan="4" class="py-6 text-center text-gray-500">
-                                    Nenhum residente cadastrado.
-                                </td>
+                                <th class="py-3 px-4 text-left font-medium whitespace-nowrap min-w-[150px]">Nome do residente</th>
+                                <th class="py-3 px-4 text-left font-medium whitespace-nowrap min-w-[80px]">Idade</th>
+                                <th class="py-3 px-4 text-left font-medium whitespace-nowrap min-w-[130px]">Estado de saúde</th>
+                                <th class="py-3 px-4 text-right font-medium whitespace-nowrap min-w-[150px]">Ações</th>
                             </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse($residents as $resident)
+                                <tr class="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0">
+                                    <td class="py-4 px-4 font-medium text-gray-900 whitespace-nowrap">{{ $resident->nome }}</td>
+                                    <td class="py-4 px-4 whitespace-nowrap">{{ $resident->idade }}</td>
+                                    <td class="py-4 px-4 whitespace-nowrap">
+                                        <span class="px-3 py-1 rounded-full text-xs font-semibold
+                                            @if($resident->estado_saude === 'Boa') bg-green-100 text-green-700
+                                            @elseif($resident->estado_saude === 'Regular') bg-yellow-100 text-yellow-700
+                                            @else bg-red-100 text-red-700
+                                            @endif
+                                        ">
+                                            {{ ucfirst($resident->estado_saude) }}
+                                        </span>
+                                    </td>
+                                    <td class="py-4 px-4 text-right whitespace-nowrap">
+                                        <a 
+                                            href="{{ route('residents.edit', $resident) }}" 
+                                            class="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M4 13v7h7l9-9-7-7-9 9z"/>
+                                            </svg>
+                                            Editar/Visualizar
+                                        </a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="py-6 text-center text-gray-500">
+                                        Nenhum residente cadastrado.
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Paginação com espaçamento -->   
